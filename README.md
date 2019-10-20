@@ -3,6 +3,15 @@ Away day organiser
 
 This is a Maven project that generates a schedule for the employees participating in various activities organised in the event. The input is in the form of text file whose filename can be passed as command-line argument.
 
+Format of input file:-
+<activity name 1> [XXmin|sprint]
+<activity name 2> [XXmin|sprint]
+  
+Example:-
+Duck Herding 60min
+Archery 45min
+Learning Magic Tricks sprint
+
 The number of teams will depend on duration of activities so that all activities can be covered in one day with the consideration for Lunch break and presentation time.
 
 The program divides activities equally among several teams and generates a schedule in output.txt file. 
