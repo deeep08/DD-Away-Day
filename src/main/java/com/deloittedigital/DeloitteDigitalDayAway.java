@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.System.*;
+
 /**
  * Starting point for Day Away application
  */
@@ -29,7 +31,8 @@ public class DeloitteDigitalDayAway {
         final Optional<String> filename = getValidatedFilename(args);
 
         if(!filename.isPresent()) {
-            throw new IllegalArgumentException("Filename not present in command-line arguments");
+            out.println("Please provide the filename as first parameter command-line argument");
+            return;
         }
 
         final File inputFile = new File(filename.get());
