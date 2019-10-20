@@ -1,5 +1,5 @@
 # DD-Away-Day
-Away day organiser for employees
+Away day organiser
 
 This is a Maven project that generates a schedule for the employees participating in various activities organised in the event. The input is in the form of text file whose filename can be passed as command-line argument.
 
