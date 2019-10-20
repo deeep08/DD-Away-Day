@@ -1,8 +1,13 @@
 package com.deloittedigital.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Objects;
 
 public class Activity {
+    private static final Logger LOG = LoggerFactory.getLogger(Activity.class);
+
     public static final int SPRINT_TIME = 15;
 
     private static final String SPRINT_TEXT = "sprint";
@@ -33,11 +38,17 @@ public class Activity {
         this.scheduled = scheduled;
     }
 
-    public static Activity createActivity(String line) {
+    public static Activity createActivity(final String line) {
         final int splitIndex = line.lastIndexOf(" ");
         String time = line.substring(splitIndex + 1);
         time = SPRINT_TEXT.equals(time) ? SPRINT_TIME + "" : time.replace(MINUTES, "");
-        return new Activity(line.substring(0, splitIndex), Integer.parseInt(time));
+
+        try {
+            return new Activity(line.substring(0, splitIndex), Integer.parseInt(time));
+        } catch (NumberFormatException e) {
+            LOG.error("Error while parsing line: {} , {}", line, e.getMessage());
+            throw e;
+        }
     }
 
     public static Activity getLunchBreakActivity() {
